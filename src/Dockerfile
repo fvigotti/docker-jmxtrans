@@ -2,10 +2,7 @@ FROM java:8u45-jdk
 
 MAINTAINER fvigotti
 
-RUN echo "debconf debconf/frontend select noninteractive" | debconf-set-selections
-RUN wget http://central.maven.org/maven2/org/jmxtrans/jmxtrans/250/jmxtrans-250.deb
-RUN dpkg -i jmxtrans-250.deb
-
+ENV version 250
 
 ADD run-jmxtrans.sh /usr/bin/run-jmxtrans.sh
 RUN chmod +x /usr/bin/run-jmxtrans.sh

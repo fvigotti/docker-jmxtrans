@@ -1,4 +1,13 @@
 #!/bin/bash
+
+echo "downloading version $version" 
+echo "debconf debconf/frontend select noninteractive" | debconf-set-selections
+wget http://central.maven.org/maven2/org/jmxtrans/jmxtrans/$version/jmxtrans-$version.deb -O jmxtrans.deb
+echo "installing"
+dpkg -i jmxtrans.deb
+
+
+
 echo "starting..."
 LOG_DIR=${LOG_DIR:-"/var/log/jmxtrans"}
 LOG_FILE=${LOG_FILE:-"/var/log/jmxtrans/jmxtrans.log"}
